@@ -6,7 +6,7 @@ export async function convertToMarkdown(base64: string, apiKey: string): Promise
 - 画像に文字がない場合は、空文字（""）を返してください。
 - 回答形式は、変換したmarkdownのみとしてください。前置きや解説は不要です。`
 
-  const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key=${apiKey}`;
+  const endpoint = `https://gateway.ai.cloudflare.com/v1/73c56e5f6972ada7599ca774bdf3ea7c/ptna-internal-cloudflare-gateway/google-ai-studio/v1beta/models/gemini-2.0-flash-exp:generateContent`;
 
   const payload = {
     "contents": {
@@ -39,6 +39,7 @@ export async function convertToMarkdown(base64: string, apiKey: string): Promise
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      "x-goog-api-key": apiKey,
     },
     body: JSON.stringify(payload),
   });
